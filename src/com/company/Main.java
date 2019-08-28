@@ -1,5 +1,6 @@
 package com.company;
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -20,5 +21,12 @@ public class Main {
         System.out.print("Period (in years): ");
         byte years = scanner.nextByte();
         int numOfPayments = years * MONTHS;
+
+        double mortgage = principal
+                * (monthlyInterest * Math.pow(1 + monthlyInterest, numOfPayments))
+                / (Math.pow(1 + monthlyInterest, numOfPayments) - 1);
+
+        NumberFormat formattedMortgage = NumberFormat.getCurrencyInstance();
+        System.out.println("Mortgage: " + formattedMortgage);
     }
 }
